@@ -1,10 +1,11 @@
 /*
 Language: Elm
 Author: Janis Voigtlaender <janis.voigtlaender@gmail.com>
+Website: https://elm-lang.org
 Category: functional
 */
 
-function(hljs) {
+export default function(hljs) {
   var COMMENT = {
     variants: [
       hljs.COMMENT('--', '$'),
@@ -38,7 +39,14 @@ function(hljs) {
     contains: LIST.contains
   };
 
+  var CHARACTER = {
+    className: 'string',
+    begin: '\'\\\\?.', end: '\'',
+    illegal: '.'
+  };
+
   return {
+    name: 'Elm',
     keywords:
       'let in if then else case of where module import exposing ' +
       'type alias as infix infixl infixr port effect command subscription',
@@ -75,7 +83,7 @@ function(hljs) {
 
       // Literals and names.
 
-      // TODO: characters.
+      CHARACTER,
       hljs.QUOTE_STRING_MODE,
       hljs.C_NUMBER_MODE,
       CONSTRUCTOR,
